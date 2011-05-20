@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  netid: MyString
+  collection: MyString
+  content_type: MyString
+  portfolio: MyString
+
+two:
+  name: MyString
+  netid: MyString
+  collection: MyString
+  content_type: MyString
+  portfolio: MyString

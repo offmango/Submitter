@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @submission.name %>
+</p>
+
+<p>
+  <b>Netid:</b>
+  <%= @submission.netid %>
+</p>
+
+<p>
+  <b>Collection:</b>
+  <%= @submission.collection %>
+</p>
+
+<p>
+  <b>Content type:</b>
+  <%= @submission.content_type %>
+</p>
+
+<p>
+  <b>Portfolio:</b>
+  <%= @submission.portfolio %>
+</p>
+
+
+<%= link_to 'Edit', edit_submission_path(@submission) %> |
+<%= link_to 'Back', submissions_path %>

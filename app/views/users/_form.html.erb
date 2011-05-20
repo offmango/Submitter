@@ -1,0 +1,38 @@
+<%= form_for @user, :html => {:multipart => true}  do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :netid %><br />
+    <%= f.text_field :netid %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+	<div class = "field">
+		<%= f.label :userphoto %><br />
+		<%= image_tag(@user.userphoto.thumb.url) if @user.userphoto? %><br />
+        <%= f.file_field :userphoto %>
+        <%= f.hidden_field :userphoto_cache %>
+	</div>
+	<div class = "field">
+	<%= f.check_box :remove_userphoto %>Remove user photo
+	</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
