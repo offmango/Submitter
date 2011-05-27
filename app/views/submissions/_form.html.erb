@@ -1,4 +1,4 @@
-<%= form_for(@submission) do |f| %>
+<%= form_for([@user, @submission], :html => {:multipart => true}) do |f| %>
   <% if @submission.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
@@ -16,20 +16,13 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :netid %><br />
-    <%= f.text_field :netid %>
+    <%= f.file_field :portfolio %>
   </div>
+	<%= f.hidden_field :netid %>
+	<%= f.hidden_field :portfolio_cache %>
   <div class="field">
     <%= f.label :collection %><br />
     <%= f.text_field :collection %>
-  </div>
-  <div class="field">
-    <%= f.label :content_type %><br />
-    <%= f.text_field :content_type %>
-  </div>
-  <div class="field">
-    <%= f.label :portfolio %><br />
-    <%= f.text_field :portfolio %>
   </div>
   <div class="actions">
     <%= f.submit %>

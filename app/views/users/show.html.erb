@@ -17,7 +17,12 @@
 <p>
 	<%= image_tag(@user.userphoto.url) if @user.userphoto? %>
 </p>
+<% for submission in @user.user_submissions %>
+<p>
+	<%= image_tag submission.portfolio.small_thumb.url %>
+</p>
+<% end %>
 	
-
+<%= link_to 'Make a new submission', new_user_submission_path(@user) %><br /><br />
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

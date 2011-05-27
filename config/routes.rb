@@ -1,9 +1,13 @@
 Submitter::Application.routes.draw do
-  resources :submissions
 
-  resources :users
+  resources :submissions, :only => :index
+
+  resources :users do
+    resources :submissions, :shallow => true
+  end
 
   root :to => "users#index"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

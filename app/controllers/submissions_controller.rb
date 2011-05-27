@@ -1,8 +1,14 @@
 class SubmissionsController < ApplicationController
-  # GET /submissions
-  # GET /submissions.xml
+ 
   def index
-    @submissions = Submission.all
+    #@user = nil
+    # Sets user to nil, then searches for submissions of a particular user if user_id is not blank
+    if params[:user_id].blank?
+      @submissions = Submission.all
+    else
+      @user = User.find(params[:user_id])
+      @submissions = Submission.find_all_by_user_id(@user.id)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,12 +30,8 @@ class SubmissionsController < ApplicationController
   # GET /submissions/new
   # GET /submissions/new.xml
   def new
+    get_user
     @submission = Submission.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @submission }
-    end
   end
 
   # GET /submissions/1/edit
@@ -40,18 +42,16 @@ class SubmissionsController < ApplicationController
   # POST /submissions
   # POST /submissions.xml
   def create
+    get_user
     @submission = Submission.new(params[:submission])
-
-    respond_to do |format|
+    @submission.user_id = @user.id
       if @submission.save
-        format.html { redirect_to(@submission, :notice => 'Submission was successfully created.') }
-        format.xml  { render :xml => @submission, :status => :created, :location => @submission }
+        flash[:notice] = 'Submission was successfully created.'
+        redirect_to @user
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @submission.errors, :status => :unprocessable_entity }
+        render :action => "new" 
       end
     end
-  end
 
   # PUT /submissions/1
   # PUT /submissions/1.xml
@@ -80,4 +80,12 @@ class SubmissionsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+private
+
+  def get_user
+    @user = User.find(params[:user_id])
+  end
+  
 end

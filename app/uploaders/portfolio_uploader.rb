@@ -1,6 +1,14 @@
 # encoding: utf-8
 
+# require File.join(Rails.root, "lib", "carrier_wave", "delayed_job") # ties in delayed_job module for thumbnailing 
+
 class PortfolioUploader < CarrierWave::Uploader::Base
+
+#  include CarrierWave::Delayed::Job   
+# testing a background solution detailed here: http://www.freezzo.com/2011/01/06/how-to-use-delayed-job-to-handle-your-carrierwave-processing/
+
+  include ::CarrierWave::Backgrounder::DelayStorage  # https://github.com/lardawge/carrierwave_backgrounder
+
 
   # Include RMagick or ImageScience support:
   include CarrierWave::RMagick
@@ -28,13 +36,36 @@ class PortfolioUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
   
+  # def smallthumb
+  #    resize(200,200)
+  #  end
+    
+  #  def largethumb
+  #    resize(800,800)
+  #  end
+  
+  
+  
+  #  NEED TO CHANGE THIS SO THAT FILE IS CONVERTED TO PNG/GIF, THEN THUMBNAILED
+  
+  #  ALSO NEED TO CHANGE FILE NAME AND LOCATION TO MATCH UP WITH CURRENT SYSTEM
+
+ 
     version :small_thumb do
-      process :resize_to_fit => [300, 300]
+      process :convert => 'png'
+      process :scale => [200, 200]
     end
     
-    version :large_thumb do
-      process :resize_to_fit => [800, 800]
+    def convert_to_png
+      img = Magick::ImageList.new("#{current_path}[0]").first
+      thumb = img.scale(100, 100)
+      new_path = current_path.sub(/pdf/, 'png')
+      thumb.write "#{new_path}" 
     end
+      
+#    version :large_thumb do
+#      process :resize_to_fit => [800, 800]
+#    end
 
   # Create different versions of your uploaded files:
   # version :thumb do

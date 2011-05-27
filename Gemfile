@@ -32,3 +32,5 @@ gem 'sqlite3'
 
 gem 'carrierwave'
 gem 'rmagick'
+gem 'delayed_job'
+gem 'carrierwave_backgrounder'
