@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   
-  mount_uploader :userphoto, UserphotoUploader
+#  mount_uploader :userphoto, UserphotoUploader
   
   has_many :submissions, :dependent => :destroy
   

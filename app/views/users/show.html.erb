@@ -15,11 +15,9 @@
   <%= @user.email %>
 </p>
 <p>
-	<%= image_tag(@user.userphoto.url) if @user.userphoto? %>
-</p>
 <% for submission in @user.user_submissions %>
 <p>
-	<%= image_tag submission.portfolio.small_thumb.url %>
+	<%= image_tag submission.portfolio.url(:small_thumb) %>
 </p>
 <% end %>
 	

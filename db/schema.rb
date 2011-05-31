@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110520205728) do
+ActiveRecord::Schema.define(:version => 20110527184948) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(:version => 20110520205728) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "portfolio_file_name"
+    t.string   "portfolio_content_type"
+    t.integer  "portfolio_file_size"
+    t.datetime "portfolio_updated_at"
+    t.boolean  "portfolio_processing"
   end
 
   create_table "users", :force => true do |t|

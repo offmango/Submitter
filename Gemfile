@@ -30,7 +30,13 @@ gem 'sqlite3'
 #   gem 'webrat'
 # end
 
-gem 'carrierwave'
+# gem 'carrierwave'
 gem 'rmagick'
-gem 'delayed_job'
-gem 'carrierwave_backgrounder'
+# gem 'delayed_job'
+# gem 'carrierwave_backgrounder'
+
+# TESTING PAPERCLIP AND DELAYED_PAPERCLIP
+
+gem 'paperclip'
+gem 'delayed_paperclip'
+gem 'resque'
