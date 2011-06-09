@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+	<th></th>
     <th>Name</th>
     <th>Netid</th>
     <th>Email</th>
@@ -12,6 +13,7 @@
 
 <% @users.each do |user| %>
   <tr>
+	<td><%= image_tag user.user_photo.url(:small_thumb) %></td>
     <td><%= user.name %></td>
     <td><%= user.netid %></td>
     <td><%= user.email %></td>

@@ -31,7 +31,7 @@ gem 'sqlite3'
 # end
 
 # gem 'carrierwave'
-gem 'rmagick'
+# gem 'rmagick'
 # gem 'delayed_job'
 # gem 'carrierwave_backgrounder'
 
@@ -40,3 +40,5 @@ gem 'rmagick'
 gem 'paperclip'
 gem 'delayed_paperclip'
 gem 'resque'
+gem 'god'
+# gem 'mysql2', '< 0.3'      #for use in production, not on test server

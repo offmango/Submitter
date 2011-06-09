@@ -16,6 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+	<%= f.label :user_photo %><br />
+    <%= f.file_field :user_photo %>
+  </div>
+  <div class="field">
     <%= f.label :netid %><br />
     <%= f.text_field :netid %>
   </div>
@@ -23,15 +27,6 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
-	<div class = "field">
-		<%= f.label :userphoto %><br />
-		<%= image_tag(@user.userphoto.thumb.url) if @user.userphoto? %><br />
-        <%= f.file_field :userphoto %>
-        <%= f.hidden_field :userphoto_cache %>
-	</div>
-	<div class = "field">
-	<%= f.check_box :remove_userphoto %>Remove user photo
-	</div>
   <div class="actions">
     <%= f.submit %>
   </div>

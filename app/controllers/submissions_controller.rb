@@ -45,6 +45,7 @@ class SubmissionsController < ApplicationController
     get_user
     @submission = Submission.new(params[:submission])
     @submission.user_id = @user.id
+    @submission.netid = @user.netid
       if @submission.save
         flash[:notice] = 'Submission was successfully created.'
         redirect_to @user

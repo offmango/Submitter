@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+	<td><%= image_tag @user.user_photo.url(:large_thumb) %></td>	
+</p>
+<p>
   <b>Name:</b>
   <%= @user.name %>
 </p>
